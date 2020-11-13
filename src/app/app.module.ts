@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ExchangeRateComponent } from './components/exchange-rate/exchange-rate.component';
+import { IfscComponent } from './components/ifsc/ifsc.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ExchangeRateComponent
+    ExchangeRateComponent,
+    IfscComponent
   ],
   imports: [
     BrowserModule,

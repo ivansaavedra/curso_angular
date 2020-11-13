@@ -23,7 +23,7 @@ export class ExchangeRateComponent implements OnInit {
     this.exchange_rate_sercie.getExchangeRate().subscribe(
       res => {
         this.exchange_rate = res;
-        console.log(res);
+        console.log(this.exchange_rate);
       },
       err => console.error(err)
     );
