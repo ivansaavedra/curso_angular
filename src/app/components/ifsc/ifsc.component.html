@@ -1,44 +1,84 @@
-<div>
-    <div>
+<div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
         <h1>IFSC</h1>
-    </div>
+      </div>
 
-    <div>
-        <table style="width:100%">
+      <div class="card-body">
+        <table class="table" style="width:100%">
+            <thead>
+                <tr>
+                    <th class="text-center">KEY</th>
+                    <th class="text-center">VALUE</th>
+                </tr>
+            </thead>
+            <tbody>
             <tr>
-              <th>RTGS</th>
-              <th>STATE</th>
-              <th>UPI</th>
-              <th>DISTRICT</th>
-              <th>CENTRE</th>
-              <th>IMPS</th>
-              <th>ADDRESS</th>
-              <th>BRANCH</th>
-              <th>NEFT</th>
-              <th>MICR</th>
-              <th>CITY</th>
-              <th>CONTACT</th>
-              <th>BANK</th>
-              <th>BANKCODE</th>
-              <th>IFSC</th>
+                <th>RTGS</th>
+                <td>{{ifsc.RTGS}}</td>
             </tr>
             <tr>
-                <td>{{ifsc.RTGS}}</td>
+                <th>STATE</th>
                 <td>{{ifsc.STATE}}</td>
+            </tr>
+            <tr>
+                <th>UPI</th>
                 <td>{{ifsc.UPI}}</td>
+            </tr>
+            <tr>
+                <th>DISTRICT</th>
                 <td>{{ifsc.DISTRICT}}</td>
+            </tr>
+            <tr>
+                <th>CENTRE</th>
                 <td>{{ifsc.CENTRE}}</td>
+            </tr>
+            <tr>
+                <th>IMPS</th>
                 <td>{{ifsc.IMPS}}</td>
+            </tr>
+            <tr>
+                <th>ADDRESS</th>
                 <td>{{ifsc.ADDRESS}}</td>
+            </tr>
+            <tr>
+                <th>BRANCH</th>
                 <td>{{ifsc.BRANCH}}</td>
+            </tr>
+            <tr>
+                <th>NEFT</th>
                 <td>{{ifsc.NEFT}}</td>
+            </tr>
+            <tr>
+                <th>MICR</th>
                 <td>{{ifsc.MICR}}</td>
+            </tr>
+            <tr>
+                <th>CITY</th>
                 <td>{{ifsc.CITY}}</td>
+            </tr>
+            <tr>
+                <th>CONTACT</th>
                 <td>{{ifsc.CONTACT}}</td>
+            </tr>
+            <tr>
+                <th>BANK</th>
                 <td>{{ifsc.BANK}}</td>
+            </tr>
+            <tr>
+                <th>BANKCODE</th>
                 <td>{{ifsc.BANKCODE}}</td>
+            </tr>
+            <tr>
+                <th>IFSC</th>
                 <td>{{ifsc.IFSC}}</td>
             </tr>
+        </tbody>
           </table>
+        </div>
+
+        <div class="card-footer">
+         
+        </div>
+      </div>
     </div>
-</div>
