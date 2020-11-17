@@ -1,1 +1,21 @@
-<p>exchange-rate works!</p>
+<div>
+    <div>
+        <h1>Exchange Rate</h1>
+        <p>base: {{ exchange_rate.base }}</p>
+        <p>date: {{ exchange_rate.date }}</p>
+        <p>time last updated: {{ exchange_rate.time_last_updated }}</p>
+    </div>
+
+    <div>
+        <table style="width:100%">
+            <tr>
+              <th>Rate</th>
+              <th>Value</th>
+            </tr>
+            <tr *ngFor="let rate of exchange_rate.rates | keyvalue">
+              <td>{{rate.key}}</td>
+              <td>{{rate.value}}</td>
+            </tr>
+          </table>
+    </div>
+</div>
