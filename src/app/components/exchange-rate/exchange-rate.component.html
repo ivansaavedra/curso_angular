@@ -1,21 +1,31 @@
-<div>
-    <div>
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-header">
         <h1>Exchange Rate</h1>
         <p>base: {{ exchange_rate.base }}</p>
         <p>date: {{ exchange_rate.date }}</p>
-        <p>time last updated: {{ exchange_rate.time_last_updated }}</p>
+        
     </div>
 
-    <div>
-        <table style="width:100%">
+    <div class="card-body">
+        <table class="table" style="width:100%">
+          <thead class="thead-light">
             <tr>
-              <th>Rate</th>
-              <th>Value</th>
+              <th class="text-center">Rate</th>
+              <th class="text-center">Value</th>
             </tr>
+          </thead>
+          <tbody>
             <tr *ngFor="let rate of exchange_rate.rates | keyvalue">
-              <td>{{rate.key}}</td>
-              <td>{{rate.value}}</td>
+              <td class="text-center">{{rate.key}}</td>
+              <td class="text-center">{{rate.value}}</td>
             </tr>
+          </tbody>
           </table>
     </div>
+
+    <div class="card-footer">
+      <p>time last updated: {{ exchange_rate.time_last_updated }}</p>
+    </div>
+  </div>
 </div>
