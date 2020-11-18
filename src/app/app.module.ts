@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ExchangeRateComponent } from './components/exchange-rate/exchange-rate.component';
 import { IfscComponent } from './components/ifsc/ifsc.component';
+import { LayoutModule } from '../app/layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { IfscComponent } from './components/ifsc/ifsc.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
