@@ -54,6 +54,9 @@
    line-height: 1.15;
    -webkit-text-size-adjust: 100%;
    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  min-height: 100%;
+  position: relative;
  }
  
  article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
@@ -4231,7 +4234,7 @@
    align-items: center;
    -ms-flex-pack: justify;
    justify-content: space-between;
-   padding: 1.5rem 1rem;
+   padding: 0.5rem 1rem;
  }
  
  .navbar .container,
