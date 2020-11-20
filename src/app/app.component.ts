@@ -14,7 +14,7 @@ import { Empleado } from './_models/empleado';
 export class AppComponent {
   title = 'cursoangular'; // variable con el nombre del proyecto
 
-  ngOnInit(){
+  funcion(){
     var message: string = "Hello World 2";
     console.log(message);
 

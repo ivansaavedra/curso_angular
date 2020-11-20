@@ -1,10 +1,12 @@
 import { ThrowStmt } from '@angular/compiler';
 
 export class Persona{
+    id: number;
     nombre: string;
     apellidos: string;
-    direcciones: string[];
     fecha_nacimiento: Date;
+    domicilio: string;
+    // direcciones: string[];
     rfc: string;
 
     constructor(nombre:string, apellidos:string){
@@ -17,10 +19,10 @@ export class Persona{
     }
 
     setDirecciones(direcciones: string[]){
-        this.direcciones = direcciones;
+        // this.direcciones = direcciones;
     }
 
     getDirecciones(){
-        return this.direcciones;
+        // return this.direcciones;
     }
 }
