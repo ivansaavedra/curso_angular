@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ExchangeRateComponent } from './components/exchange-rate/exchange-rate.component';
 import { IfscComponent } from './components/ifsc/ifsc.component';
 import { LayoutModule } from '../app/layout/layout.module';
+import { PersonaComponent } from './components/persona/persona.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ExchangeRateComponent,
-    IfscComponent
+    IfscComponent,
+    PersonaComponent
   ],
   imports: [
     BrowserModule,
