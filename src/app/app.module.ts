@@ -9,13 +9,15 @@ import { ExchangeRateComponent } from './components/exchange-rate/exchange-rate.
 import { IfscComponent } from './components/ifsc/ifsc.component';
 import { LayoutModule } from '../app/layout/layout.module';
 import { PersonaComponent } from './components/persona/persona.component';
+import { EmpleadoComponent } from './components/empleado/empleado.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ExchangeRateComponent,
     IfscComponent,
-    PersonaComponent
+    PersonaComponent,
+    EmpleadoComponent
   ],
   imports: [
     BrowserModule,
