@@ -12,4 +12,8 @@ export class EmpleadoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getEmpleados(){
+    
+  }
+
 }
