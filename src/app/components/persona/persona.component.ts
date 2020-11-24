@@ -10,11 +10,14 @@ import { PersonaService } from 'src/app/_services/persona.service';
 export class PersonaComponent implements OnInit {
 
   personas: Persona[];
+  persona: Persona;
 
   constructor(private persona_service: PersonaService) { }
 
   ngOnInit(): void {
     this.getPersonas();
+
+    this.getPersona(30);
   }
 
   getPersonas(){
@@ -26,5 +29,16 @@ export class PersonaComponent implements OnInit {
       },
       err => console.error(err)
     );
+  }
+
+  getPersona(id: number){
+    this.persona = null;
+    this.persona_service.getPersona(id).subscribe(
+      res =>{
+        this.persona = res;
+        console.log(this.persona);
+      },
+      err => console.error(err)
+    )
   }
 }
