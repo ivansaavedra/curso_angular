@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: 'exchange-rate' , component: ExchangeRateComponent },
   {path: 'ifsc' , component: IfscComponent },
   {path: 'persona' , component: PersonaComponent },
-  {path: 'empleado' , component: EmpleadoComponent }
+  {path: 'empleado' , component: EmpleadoComponent}
 ];
 
 @NgModule({
