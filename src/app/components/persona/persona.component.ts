@@ -79,9 +79,13 @@ export class PersonaComponent implements OnInit {
       res =>{
         console.log("Persona registrada!");
         this.getPersonas();
+        this.submitted = false;
+        this.formulario.reset();
       },
       err => console.error(err)
     )
   }
+
+  get f(){ return this.formulario.controls }
   
 }
