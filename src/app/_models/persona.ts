@@ -1,5 +1,3 @@
-import { ThrowStmt } from '@angular/compiler';
-
 export class Persona{
     id: number;
     nombre: string;

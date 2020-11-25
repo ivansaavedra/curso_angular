@@ -35,5 +35,4 @@ export class PersonaService {
   deletePersona(id: number){
     return this.http.delete(this.API_URL+"/persona/"+id);
   }
-
 }

@@ -16,4 +16,8 @@ export class EmpleadoComponent implements OnInit {
     
   }
 
+  getEmpleado(id:number){
+    
+  }
+
 }

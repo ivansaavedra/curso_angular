@@ -17,7 +17,7 @@ export class PersonaComponent implements OnInit {
   ngOnInit(): void {
     this.getPersonas();
 
-    this.getPersona(30);
+    this.getPersona(2);
   }
 
   getPersonas(){
@@ -41,4 +41,14 @@ export class PersonaComponent implements OnInit {
       err => console.error(err)
     )
   }
+
+  deletePersona(id: number){
+    this.persona_service.deletePersona(id).subscribe(
+      res =>{
+        this.getPersonas();
+      },
+      err => console.error(err)
+    )
+  }
+  
 }

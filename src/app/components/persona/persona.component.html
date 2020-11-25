@@ -15,6 +15,7 @@
                 <th class="text-center">Fecha de Nacimiento</th>
                 <th class="text-center">Domicilio</th>
                 <th class="text-center">RFC</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -25,6 +26,11 @@
                 <td class="text-center">{{persona.fecha_nacimiento}}</td>
                 <td class="text-center">{{persona.domicilio}}</td>
                 <td class="text-center">{{persona.rfc}}</td>
+                <td>
+                  <div>
+                    <button (click)="deletePersona(persona.id)" type="button" class="btn btn-danger btn-sm">Eliminar</button>
+                  </div>
+                </td>
               </tr>
             </tbody>
             </table>
