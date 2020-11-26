@@ -86,6 +86,15 @@ export class PersonaComponent implements OnInit {
     )
   }
 
+  updatePersona(persona: Persona){
+    this.formulario.controls['id'].setValue(persona.id);
+    this.formulario.controls['nombre'].setValue(persona.nombre);
+    this.formulario.controls['apellidos'].setValue(persona.apellidos);
+    this.formulario.controls['fecha_nacimiento'].setValue(persona.fecha_nacimiento);
+    this.formulario.controls['domicilio'].setValue(persona.domicilio);
+    this.formulario.controls['rfc'].setValue(persona.rfc);
+  }
+
   get f(){ return this.formulario.controls }
   
 }
