@@ -48,7 +48,7 @@
       <label for="nombre">Nombre*</label>
       <input type="text" class="form-control" formControlName="nombre" [ngClass]="{'is-invalid': submitted && f.nombre.errors}">
       <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
-        <div *ngIf="f.nombre.errors.required">El nombre de la persona es obligatorio</div>
+        El nombre de la persona es obligatorio
       </div>
     </div>
 
@@ -56,7 +56,7 @@
       <label for="apellidos">Apellidos*</label>
       <input type="text" class="form-control" formControlName="apellidos" [ngClass]="{'is-invalid': submitted && f.apellidos.errors}">
       <div *ngIf="submitted && f.apellidos.errors" class="invalid-feedback">
-        <div *ngIf="f.apellidos.errors.required">Los apellidos de la persona son obligatorios</div>
+        Los apellidos de la persona son obligatorios
       </div>
     </div>
 
@@ -64,7 +64,7 @@
       <label for="fecha_nacimiento">Fecha de Nacimiento*</label>
       <input type="date" class="form-control" formControlName="fecha_nacimiento" [ngClass]="{'is-invalid': submitted && f.fecha_nacimiento.errors}">
       <div *ngIf="submitted && f.fecha_nacimiento.errors" class="invalid-feedback">
-        <div *ngIf="f.fecha_nacimiento.errors.required">La fecha de nacimiento de la persona es obligatoria</div>
+        La fecha de nacimiento de la persona es obligatoria
       </div>
     </div>
 
@@ -72,7 +72,7 @@
       <label for="domicilio">Domicilio*</label>
       <input type="text" class="form-control" formControlName="domicilio" [ngClass]="{'is-invalid': submitted && f.domicilio.errors}">
       <div *ngIf="submitted && f.domicilio.errors" class="invalid-feedback">
-        <div *ngIf="f.domicilio.errors.required">El domicilio de la persona es obligatorio</div>
+          El domicilio de la persona es obligatorio
       </div>
     </div>
 
@@ -80,7 +80,7 @@
       <label for="rfc">RFC*</label>
       <input type="text" class="form-control" formControlName="rfc" [ngClass]="{'is-invalid': submitted && f.rfc.errors}">
       <div *ngIf="submitted && f.rfc.errors" class="invalid-feedback">
-        <div *ngIf="f.rfc.errors.required">El RFC de la persona es obligatorio</div>
+        El RFC de la persona es obligatorio
       </div>
     </div>
 
