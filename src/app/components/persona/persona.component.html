@@ -28,7 +28,7 @@
                 <td class="text-center">{{persona.rfc}}</td>
                 <td>
                   <div>
-                    <button (click)="updatePersona(persona)" type="button" class="btn btn-primary btn-sm">Actualizar</button>
+                    <button (click)="llenarFormulario(persona)" type="button" class="btn btn-primary btn-sm">Actualizar</button>
                     &nbsp;&nbsp;
                     <button (click)="deletePersona(persona.id)" type="button" class="btn btn-danger btn-sm">Eliminar</button>
                   </div>
@@ -44,7 +44,7 @@
   </div>
 
 <div>
-  <form [formGroup]="formulario" (ngSubmit)="createPersona()">
+  <form [formGroup]="formulario" (ngSubmit)="ngSubmit()">
 
     <div class="form-group">
       <label for="nombre">Nombre*</label>
@@ -87,7 +87,7 @@
     </div>
 
     <div>
-      <button class="btn btn-dark">Registrar Persona</button>
+      <button class="btn btn-dark">Guardar</button>
     </div>
 
   </form>

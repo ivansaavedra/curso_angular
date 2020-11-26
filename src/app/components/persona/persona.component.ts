@@ -17,6 +17,8 @@ export class PersonaComponent implements OnInit {
   formulario: FormGroup;
   submitted = false;
 
+  update = false;
+
   constructor(private persona_service: PersonaService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -31,8 +33,6 @@ export class PersonaComponent implements OnInit {
     });
 
     this.getPersonas();
-
-    this.getPersona(2);
   }
 
   getPersonas(){
@@ -67,7 +67,7 @@ export class PersonaComponent implements OnInit {
     )
   }
 
-  createPersona(){
+  ngSubmit(){
     this.submitted = true;
 
     if(this.formulario.invalid){
@@ -75,6 +75,14 @@ export class PersonaComponent implements OnInit {
       return;
     }
 
+    if(this.update){
+      this.updatePersona();
+    }else{
+      this.createPersona();
+    }
+  }
+
+  createPersona(){
     this.persona_service.createPersona(this.formulario.value).subscribe(
       res =>{
         console.log("Persona registrada!");
@@ -86,13 +94,28 @@ export class PersonaComponent implements OnInit {
     )
   }
 
-  updatePersona(persona: Persona){
+  updatePersona(){
+    this.persona_service.updatePersona(this.formulario.value).subscribe(
+      res =>{
+        console.log("Persona actualizada!");
+        this.getPersonas();
+        this.submitted = false;
+        this.formulario.reset();
+        this.update = false;
+      },
+      err => console.error(err)
+    )
+  }
+
+  llenarFormulario(persona: Persona){
     this.formulario.controls['id'].setValue(persona.id);
     this.formulario.controls['nombre'].setValue(persona.nombre);
     this.formulario.controls['apellidos'].setValue(persona.apellidos);
     this.formulario.controls['fecha_nacimiento'].setValue(persona.fecha_nacimiento);
     this.formulario.controls['domicilio'].setValue(persona.domicilio);
     this.formulario.controls['rfc'].setValue(persona.rfc);
+
+    this.update = true;
   }
 
   get f(){ return this.formulario.controls }
