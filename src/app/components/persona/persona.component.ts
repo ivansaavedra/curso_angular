@@ -65,7 +65,8 @@ export class PersonaComponent implements OnInit {
   deletePersona(id: number){
     this.persona_service.deletePersona(id).subscribe(
       res =>{
-        console.log("Persona eliminada!")
+        console.log("Persona eliminada!");
+        alert("Persona eliminada!");
         this.getPersonas();
       },
       err => console.error(err)
@@ -92,6 +93,7 @@ export class PersonaComponent implements OnInit {
     this.persona_service.createPersona(this.formulario.value).subscribe(
       res =>{
         console.log("Persona registrada!");
+        alert("Persona registrada!")
         this.getPersonas();
         this.submitted = false;
         this.formulario.reset();
@@ -106,6 +108,7 @@ export class PersonaComponent implements OnInit {
     this.persona_service.updatePersona(this.formulario.value).subscribe(
       res =>{
         console.log("Persona actualizada!");
+        alert("Persona actualizada!");
         this.getPersonas();
         this.submitted = false;
         this.formulario.reset();
