@@ -6,6 +6,9 @@
       </div>
   
       <div class="card-body">
+        <button style="float: right" (click)="openModal()" type="button" class="btn btn-info btn-sm">Registrar Persona</button>
+        <br><br>
+
           <table class="table" style="width:100%">
             <thead class="thead-light">
               <tr>
@@ -43,52 +46,75 @@
     </div>
   </div>
 
-<div>
-  <form [formGroup]="formulario" (ngSubmit)="ngSubmit()">
+<!-- MODAL -->
+<div class="modal" tabindex="-1" id="personaModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
 
-    <div class="form-group">
-      <label for="nombre">Nombre*</label>
-      <input type="text" class="form-control" formControlName="nombre" [ngClass]="{'is-invalid': submitted && f.nombre.errors}">
-      <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
-        El nombre de la persona es obligatorio
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form [formGroup]="formulario" (ngSubmit)="ngSubmit()">
+
+          <div class="form-group">
+            <label for="nombre">Nombre*</label>
+            <input type="text" class="form-control" formControlName="nombre" [ngClass]="{'is-invalid': submitted && f.nombre.errors}">
+            <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+              El nombre de la persona es obligatorio
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <label for="apellidos">Apellidos*</label>
+            <input type="text" class="form-control" formControlName="apellidos" [ngClass]="{'is-invalid': submitted && f.apellidos.errors}">
+            <div *ngIf="submitted && f.apellidos.errors" class="invalid-feedback">
+              Los apellidos de la persona son obligatorios
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <label for="fecha_nacimiento">Fecha de Nacimiento*</label>
+            <input type="date" class="form-control" formControlName="fecha_nacimiento" [ngClass]="{'is-invalid': submitted && f.fecha_nacimiento.errors}">
+            <div *ngIf="submitted && f.fecha_nacimiento.errors" class="invalid-feedback">
+              La fecha de nacimiento de la persona es obligatoria
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <label for="domicilio">Domicilio*</label>
+            <input type="text" class="form-control" formControlName="domicilio" [ngClass]="{'is-invalid': submitted && f.domicilio.errors}">
+            <div *ngIf="submitted && f.domicilio.errors" class="invalid-feedback">
+                El domicilio de la persona es obligatorio
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <label for="rfc">RFC*</label>
+            <input type="text" class="form-control" formControlName="rfc" [ngClass]="{'is-invalid': submitted && f.rfc.errors}">
+            <div *ngIf="submitted && f.rfc.errors" class="invalid-feedback">
+              El RFC de la persona es obligatorio
+            </div>
+          </div>
+      
+          <div>
+            <button class="btn btn-dark">Guardar</button>
+          </div>
+      
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <div>
+          <button class="btn btn-dark">Guardar</button>
+        </div>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
       </div>
     </div>
-
-    <div class="form-group">
-      <label for="apellidos">Apellidos*</label>
-      <input type="text" class="form-control" formControlName="apellidos" [ngClass]="{'is-invalid': submitted && f.apellidos.errors}">
-      <div *ngIf="submitted && f.apellidos.errors" class="invalid-feedback">
-        Los apellidos de la persona son obligatorios
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="fecha_nacimiento">Fecha de Nacimiento*</label>
-      <input type="date" class="form-control" formControlName="fecha_nacimiento" [ngClass]="{'is-invalid': submitted && f.fecha_nacimiento.errors}">
-      <div *ngIf="submitted && f.fecha_nacimiento.errors" class="invalid-feedback">
-        La fecha de nacimiento de la persona es obligatoria
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="domicilio">Domicilio*</label>
-      <input type="text" class="form-control" formControlName="domicilio" [ngClass]="{'is-invalid': submitted && f.domicilio.errors}">
-      <div *ngIf="submitted && f.domicilio.errors" class="invalid-feedback">
-          El domicilio de la persona es obligatorio
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="rfc">RFC*</label>
-      <input type="text" class="form-control" formControlName="rfc" [ngClass]="{'is-invalid': submitted && f.rfc.errors}">
-      <div *ngIf="submitted && f.rfc.errors" class="invalid-feedback">
-        El RFC de la persona es obligatorio
-      </div>
-    </div>
-
-    <div>
-      <button class="btn btn-dark">Guardar</button>
-    </div>
-
-  </form>
+  </div>
 </div>

@@ -4,6 +4,8 @@ import { PersonaService } from 'src/app/_services/persona.service';
 
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 
+declare var $: any;
+
 @Component({
   selector: 'app-persona',
   templateUrl: './persona.component.html',
@@ -35,6 +37,7 @@ export class PersonaComponent implements OnInit {
     this.getPersonas();
   }
 
+  // List
   getPersonas(){
     this.personas = [];
     this.persona_service.getPersonas().subscribe(
@@ -46,6 +49,7 @@ export class PersonaComponent implements OnInit {
     );
   }
 
+  // Read
   getPersona(id: number){
     this.persona = null;
     this.persona_service.getPersona(id).subscribe(
@@ -57,6 +61,7 @@ export class PersonaComponent implements OnInit {
     )
   }
 
+  // Delete
   deletePersona(id: number){
     this.persona_service.deletePersona(id).subscribe(
       res =>{
@@ -82,6 +87,7 @@ export class PersonaComponent implements OnInit {
     }
   }
 
+  // Create
   createPersona(){
     this.persona_service.createPersona(this.formulario.value).subscribe(
       res =>{
@@ -89,11 +95,13 @@ export class PersonaComponent implements OnInit {
         this.getPersonas();
         this.submitted = false;
         this.formulario.reset();
+        $("#personaModal").modal("hide");
       },
       err => console.error(err)
     )
   }
 
+  // Update
   updatePersona(){
     this.persona_service.updatePersona(this.formulario.value).subscribe(
       res =>{
@@ -102,6 +110,7 @@ export class PersonaComponent implements OnInit {
         this.submitted = false;
         this.formulario.reset();
         this.update = false;
+        $("#personaModal").modal("hide");
       },
       err => console.error(err)
     )
@@ -116,8 +125,13 @@ export class PersonaComponent implements OnInit {
     this.formulario.controls['rfc'].setValue(persona.rfc);
 
     this.update = true;
+    this.openModal();
   }
 
   get f(){ return this.formulario.controls }
+
+  openModal(){
+    $("#personaModal").modal("show");
+  }
   
 }
