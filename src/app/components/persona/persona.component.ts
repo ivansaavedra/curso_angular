@@ -4,6 +4,8 @@ import { PersonaService } from 'src/app/_services/persona.service';
 
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 
+import Swal from 'sweetalert2';
+
 declare var $: any;
 
 @Component({
@@ -93,7 +95,16 @@ export class PersonaComponent implements OnInit {
     this.persona_service.createPersona(this.formulario.value).subscribe(
       res =>{
         console.log("Persona registrada!");
-        alert("Persona registrada!")
+        // alert("Persona registrada!")
+
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'La persona fue registrada exitosamente!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        
         this.getPersonas();
         this.submitted = false;
         this.formulario.reset();
@@ -108,7 +119,16 @@ export class PersonaComponent implements OnInit {
     this.persona_service.updatePersona(this.formulario.value).subscribe(
       res =>{
         console.log("Persona actualizada!");
-        alert("Persona actualizada!");
+        // alert("Persona actualizada!");
+
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'La persona fue actualizada exitosamente!',
+          showConfirmButton: false,
+          timer: 2500
+        })
+
         this.getPersonas();
         this.submitted = false;
         this.formulario.reset();
