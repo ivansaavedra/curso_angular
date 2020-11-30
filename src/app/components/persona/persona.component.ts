@@ -65,14 +65,32 @@ export class PersonaComponent implements OnInit {
 
   // Delete
   deletePersona(id: number){
-    this.persona_service.deletePersona(id).subscribe(
-      res =>{
-        console.log("Persona eliminada!");
-        alert("Persona eliminada!");
-        this.getPersonas();
-      },
-      err => console.error(err)
-    )
+    Swal.fire({
+      title: 'Estás seguro que deseas eliminar?',
+      text: "Esta acción no podra deshacerse!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this.persona_service.deletePersona(id).subscribe(
+          res =>{
+            this.getPersonas();
+          },
+          err => console.error(err)
+        )
+
+        Swal.fire(
+          'Eliminada!',
+          'La persona ha sido eliminada exitosamente.',
+          'success'
+        )
+      }
+    })
+    
   }
 
   ngSubmit(){
