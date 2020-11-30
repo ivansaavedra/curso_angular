@@ -12,6 +12,7 @@ import { IfscComponent } from './components/ifsc/ifsc.component';
 import { LayoutModule } from '../app/layout/layout.module';
 import { PersonaComponent } from './components/persona/persona.component';
 import { EmpleadoComponent } from './components/empleado/empleado.component';
+import { PersonaDetalleComponent } from './components/persona-detalle/persona-detalle.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { EmpleadoComponent } from './components/empleado/empleado.component';
     ExchangeRateComponent,
     IfscComponent,
     PersonaComponent,
-    EmpleadoComponent
+    EmpleadoComponent,
+    PersonaDetalleComponent
   ],
   imports: [
     BrowserModule,
