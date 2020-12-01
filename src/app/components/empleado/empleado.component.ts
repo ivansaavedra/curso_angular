@@ -5,7 +5,7 @@ import { EmpleadoService } from '../../_services/empleado.service';
 
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
-import Swal from 'sweetalert2'; 
+import Swal from 'sweetalert2';
 
 declare var $: any;
 
@@ -21,6 +21,8 @@ export class EmpleadoComponent implements OnInit {
   empleadoForm: FormGroup;
   submitted = false;
   modalTitle: string;
+
+  //variables para diferenciar el archivo
   contrato: string;
   fotografia: string;
 
@@ -83,4 +85,77 @@ export class EmpleadoComponent implements OnInit {
     )
   }
 
+  // Crear/modificar un empleado
+  onSubmit(){
+    this.submitted = true;
+
+    if(this.empleadoForm.invalid){
+      console.log('Formulario inválido');
+      return;
+    }
+
+    if(this.modalTitle == "Registrar"){
+      console.log(this.empleadoForm.value);
+      this.empleadoService.creatEmpleado(this.empleadoForm.value).subscribe(
+        res => {
+          this.getEmpleados();
+          $("#empleadoModal").modal("hide");
+          this.submitted = false;
+        },
+        err => console.error(err)
+      )
+    }else{
+      this.empleadoService.updateEmpleado(this.empleadoForm.value).subscribe(
+        res => {
+          this.getEmpleados();
+          $("#empleadoModal").modal("hide");
+          this.submitted = false;
+        },
+        err => {
+          console.error(err);
+        }
+      )
+    }
+    
+  }
+
+  get f() { return this.empleadoForm.controls;}
+
+  openModalEmpleado(){
+    this.empleadoForm.reset();
+    this.modalTitle = "Registrar";
+    $("#empleadoModal").modal("show");
+  }
+
+  convertFile(event, formulario, field){
+    let reader = new FileReader();
+    reader.readAsDataURL(<File> event.target.files[0]);
+    reader.onload = function(){
+      if(field == "contrato"){
+        formulario.controls['contrato'].setValue(reader.result);
+      }else{
+        formulario.controls['fotografia'].setValue(reader.result);
+      }
+    }
+    reader.onerror = function(error){
+      console.log(error);
+    }
+  }
+
+  showImage(image){
+    Swal.fire({
+      imageUrl: image
+    })
+  }
+
+  showPdf(pdf){
+    var downloadLink = document.createElement("a");
+
+    downloadLink.href = pdf;
+    downloadLink.download = "file.pdf";
+    downloadLink.click();
+
+    return downloadLink;
+  }
+ 
 }

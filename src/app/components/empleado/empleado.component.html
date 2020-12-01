@@ -8,7 +8,7 @@
 
         <!-- Body  --> 
         <div class="card-body">
-            <button style="float: right;" type="button" class="btn btn-info btn-sm"> Agregar Empleado</button>
+            <button style="float: right;" (click)="openModalEmpleado()" type="button" class="btn btn-info btn-sm"> Agregar Empleado</button>
             <br><br>
             
             <table class="table" style="width:100%">
@@ -19,7 +19,8 @@
                         <th class="text-center">Fecha de Ingreso</th>
                         <th class="text-center">Área</th>
                         <th class="text-center">Puesto</th>
-                        <th class="text-center">Sueldo</th>
+                        <th class="text-center">Fotografia</th>
+                        <th class="text-center">Contrato</th> 
                         <th></th>
                     </tr>
                 </thead>
@@ -30,7 +31,10 @@
                         <td class="text-center">{{ empleado.fecha_ingreso | date : 'dd/MM/yyyy' : 'UTC' }}</td>
                         <td class="text-center">{{ empleado.area }}</td>
                         <td class="text-center">{{ empleado.puesto }}</td>
-                        <td class="text-center">{{ empleado.sueldo }}</td>
+                        <!-- <td class="text-center">{{ empleado.fotografia }}</td> -->
+                        <!-- <td class="text-center"><img class="img" src="{{ empleado.fotografia }}" width="100px" height="100px"></td> -->
+                        <td class="text-center"><button (click)="showImage(empleado.fotografia)" type="button" class="btn btn-link">ver fotografia</button></td>
+                        <td class="text-center"><button (click)="showPdf(empleado.contrato)" type="button" class="btn btn-link">ver contrato</button></td>
                         <td>
                             <div>
                                 <button (click)="updateEmpleado(empleado)" type="button" class="btn btn-primary btn-sm">&nbsp; Editar &nbsp;</button>
@@ -49,3 +53,122 @@
     </div>
 </div>
 
+<div class="modal" id="empleadoModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">{{modalTitle}} Empleado</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="empleadoForm" (ngSubmit)="onSubmit()">
+
+                    <div class="form-group">
+                        <label for="nombre">Nombre<span class="text-danger">*</span></label>
+                        <input type="text" formControlName="nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }">
+                        <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+                            <div *ngIf="f.nombre.errors.required">El nombre del empleado es obligatorio</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="apellidos">Apellidos<span class="text-danger">*</span></label>
+                        <input type="text" formControlName="apellidos" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors }" />
+                        <div *ngIf="submitted && f.apellidos.errors" class="invalid-feedback">
+                        <div *ngIf="f.apellidos.errors.required">Los apellidos del empleado son obligatorios</div>
+                        </div>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="fecha_nacimiento">Fecha de nacimiento<span class="text-danger">*</span></label>
+                        <input type="date" formControlName="fecha_nacimiento" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fecha_nacimiento.errors }" />
+                        <div *ngIf="submitted && f.fecha_nacimiento.errors" class="invalid-feedback">
+                            <div *ngIf="f.fecha_nacimiento.errors.required">La fecha de nacimiento del empleado es obligatorio</div>
+                        </div>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="domicilio">Domicilio<span class="text-danger">*</span></label>
+                        <textarea rows="3" formControlName="domicilio" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.domicilio.errors }"></textarea>
+                        <div *ngIf="submitted && f.domicilio.errors" class="invalid-feedback">
+                        <div *ngIf="f.domicilio.errors.required">El domicilio del empleado es obligatorio</div>
+                        </div>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="rfc">RFC<span class="text-danger">*</span></label>
+                        <input type="text" formControlName="rfc" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.rfc.errors }" />
+                        <div *ngIf="submitted && f.rfc.errors" class="invalid-feedback">
+                        <div *ngIf="f.rfc.errors.required">El RFC del empleado es obligatorio</div>
+                        </div>
+                    </div>
+            
+            
+                    <div class="form-group">
+                        <label for="nombre">Número de empleado<span class="text-danger">*</span></label>
+                        <input type="text" formControlName="no_empleado" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.no_empleado.errors }">
+                        <div *ngIf="submitted && f.no_empleado.errors" class="invalid-feedback">
+                            <div *ngIf="f.no_empleado.errors.required">El número del empleado es obligatorio</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha_ingreso">Fecha de ingreso<span class="text-danger">*</span></label>
+                        <input type="date" formControlName="fecha_ingreso" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fecha_ingreso.errors }" />
+                        <div *ngIf="submitted && f.fecha_ingreso.errors" class="invalid-feedback">
+                            <div *ngIf="f.fecha_ingreso.errors.required">La fecha de ingreso del empleado es obligatorio</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre">Área<span class="text-danger">*</span></label>
+                        <input type="text" formControlName="area" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.area.errors }">
+                        <div *ngIf="submitted && f.area.errors" class="invalid-feedback">
+                            <div *ngIf="f.area.errors.required">El área del empleado es obligatoria</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre">Puesto<span class="text-danger">*</span></label>
+                        <input type="text" formControlName="puesto" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.puesto.errors }">
+                        <div *ngIf="submitted && f.puesto.errors" class="invalid-feedback">
+                            <div *ngIf="f.puesto.errors.required">El puesto del empleado es obligatorio</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre">Sueldo<span class="text-danger">*</span></label>
+                        <input type="text" formControlName="sueldo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sueldo.errors }">
+                        <div *ngIf="submitted && f.sueldo.errors" class="invalid-feedback">
+                            <div *ngIf="f.sueldo.errors.required">El sueldo del empleado es obligatorio</div>
+                        </div>
+                    </div>
+
+                    
+                    <label for="fotografia">Fotografia<span class="text-danger">*</span></label>
+                    <div class="custom-file">
+                        <input type="file" accept="image/*" class="custom-file-input" (change)=convertFile($event,empleadoForm,fotografia)>
+                        <label class="custom-file-label" for="customFile">Selecciona una fotografia...</label>
+                    </div>
+                    
+                    <label for="contrato">Contrato<span class="text-danger">*</span></label>
+                    <div class="custom-file">
+                        <input type="file" accept=".pdf" class="custom-file-input" (change)=convertFile($event,empleadoForm,contrato)>
+                        <label class="custom-file-label" for="customFile">Selecciona un contrato...</label>
+                    </div>
+
+                    <p class="text-right"><span class="text-danger">*</span> Campos requeridos</p>
+                    <div>
+                        <button class="btn btn-success btn-block">Guardar</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        
+        </div>
+    </div>
+</div>
