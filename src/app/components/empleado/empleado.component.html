@@ -1,1 +1,51 @@
-<p>empleado works!</p>
+<div class="container-fluid">
+    <div class="card">
+
+        <!-- Header  -->
+        <div class="card-header">
+            <h3>Empleado</h3>
+        </div>
+
+        <!-- Body  --> 
+        <div class="card-body">
+            <button style="float: right;" type="button" class="btn btn-info btn-sm"> Agregar Empleado</button>
+            <br><br>
+            
+            <table class="table" style="width:100%">
+                <thead class="thead-light">
+                    <tr>
+                        <th class="text-center">Empleado</th>
+                        <th class="text-center">Nombre</th>
+                        <th class="text-center">Fecha de Ingreso</th>
+                        <th class="text-center">Área</th>
+                        <th class="text-center">Puesto</th>
+                        <th class="text-center">Sueldo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let empleado of empleados">
+                        <td class="text-center">{{ empleado.no_empleado }}</td>
+                        <td class="text-center">{{ empleado.nombre + " " + empleado.apellidos }}</td>
+                        <td class="text-center">{{ empleado.fecha_ingreso | date : 'dd/MM/yyyy' : 'UTC' }}</td>
+                        <td class="text-center">{{ empleado.area }}</td>
+                        <td class="text-center">{{ empleado.puesto }}</td>
+                        <td class="text-center">{{ empleado.sueldo }}</td>
+                        <td>
+                            <div>
+                                <button (click)="updateEmpleado(empleado)" type="button" class="btn btn-primary btn-sm">&nbsp; Editar &nbsp;</button>
+                                &nbsp;&nbsp;
+                                <button (click)="deleteEmpleado(empleado.id)" type="button" class="btn btn-danger btn-sm">Eliminar</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card-footer">
+            
+        </div>
+    </div>
+</div>
+

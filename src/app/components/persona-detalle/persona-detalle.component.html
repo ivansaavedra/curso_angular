@@ -1,1 +1,37 @@
-<p>persona-detalle works!</p>
+<div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <h1>{{ persona.nombre + " " + persona.apellidos }}</h1>
+      </div>
+
+      <div class="card-body">
+        <table class="table" style="width:100%">
+            <thead>
+                <tr>
+                    <th class="text-center">KEY</th>
+                    <th class="text-center">VALUE</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th>Fecha de Nacimiento</th>
+                <td>{{persona.fecha_nacimiento}}</td>
+            </tr>
+            <tr>
+                <th>Domicilio</th>
+                <td>{{persona.domicilio}}</td>
+            </tr>
+            <tr>
+                <th>RFC</th>
+                <td>{{persona.rfc}}</td>
+            </tr>
+            
+        </tbody>
+          </table>
+        </div>
+
+        <div class="card-footer">
+         
+        </div>
+      </div>
+    </div>
