@@ -4,6 +4,8 @@ import { PersonaService } from 'src/app/_services/persona.service';
 
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 
+import { Router } from '@angular/router';
+
 import Swal from 'sweetalert2';
 
 declare var $: any;
@@ -23,7 +25,7 @@ export class PersonaComponent implements OnInit {
 
   update = false;
 
-  constructor(private persona_service: PersonaService, private formBuilder: FormBuilder) { }
+  constructor(private persona_service: PersonaService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -174,6 +176,10 @@ export class PersonaComponent implements OnInit {
 
   openModal(){
     $("#personaModal").modal("show");
+  }
+
+  verDetallePersona(id){
+    this.router.navigate(['persona/'+id]);
   }
   
 }

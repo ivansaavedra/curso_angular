@@ -31,6 +31,8 @@
                 <td class="text-center">{{persona.rfc}}</td>
                 <td>
                   <div>
+                    <button (click)="verDetallePersona(persona.id)" type="button" class="btn btn-info btn-sm">Ver Detalle</button>
+                    &nbsp;&nbsp;
                     <button (click)="llenarFormulario(persona)" type="button" class="btn btn-primary btn-sm">Actualizar</button>
                     &nbsp;&nbsp;
                     <button (click)="deletePersona(persona.id)" type="button" class="btn btn-danger btn-sm">Eliminar</button>
