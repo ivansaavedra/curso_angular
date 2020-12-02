@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Persona } from 'src/app/_models/persona';
 import { PersonaService } from 'src/app/_services/persona.service';
 
+import { Delegacion } from 'src/app/_models/delegacion';
+import { DelegacionService } from 'src/app/_services/delegacion.service';
+
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import { Router } from '@angular/router';
@@ -20,12 +23,14 @@ export class PersonaComponent implements OnInit {
   personas: Persona[];
   persona: Persona;
 
+  delegaciones: Delegacion[];
+
   formulario: FormGroup;
   submitted = false;
 
   update = false;
 
-  constructor(private persona_service: PersonaService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private delegacion_service: DelegacionService, private persona_service: PersonaService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -39,6 +44,20 @@ export class PersonaComponent implements OnInit {
     });
 
     this.getPersonas();
+
+    this.getDelegaciones();
+  }
+
+  // List delegaciones
+  getDelegaciones(){
+    this.delegaciones = [];
+    this.delegacion_service.getDelegaciones().subscribe(
+      res => {
+        this.delegaciones = res;
+        console.log(this.delegaciones);
+      },
+      err => console.error(err)
+    );
   }
 
   // List

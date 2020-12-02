@@ -89,7 +89,10 @@
       
           <div class="form-group">
             <label for="domicilio">Domicilio*</label>
-            <input type="text" class="form-control" formControlName="domicilio" [ngClass]="{'is-invalid': submitted && f.domicilio.errors}">
+            <!-- <input type="text" class="form-control" formControlName="domicilio" [ngClass]="{'is-invalid': submitted && f.domicilio.errors}"> -->
+            <select class="form-control" formControlName="domicilio" [ngClass]="{'is-invalid': submitted && f.domicilio.errors}">
+              <option *ngFor="let delegacion of delegaciones" [ngValue]="delegacion.delegacion">{{delegacion.delegacion}}</option>
+            </select>
             <div *ngIf="submitted && f.domicilio.errors" class="invalid-feedback">
                 El domicilio de la persona es obligatorio
             </div>
