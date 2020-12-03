@@ -6,13 +6,14 @@ import { AppComponent } from './app.component';
 
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ExchangeRateComponent } from './components/exchange-rate/exchange-rate.component';
 import { IfscComponent } from './components/ifsc/ifsc.component';
 import { LayoutModule } from '../app/layout/layout.module';
 import { PersonaComponent } from './components/persona/persona.component';
 import { EmpleadoComponent } from './components/empleado/empleado.component';
 import { PersonaDetalleComponent } from './components/persona-detalle/persona-detalle.component';
+import { InterceptorService } from './_services/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PersonaDetalleComponent } from './components/persona-detalle/persona-de
     FormsModule, 
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
