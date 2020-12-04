@@ -29,6 +29,7 @@ export class PersonaComponent implements OnInit {
   submitted = false;
 
   update = false;
+  loading = false;
 
   constructor(private delegacion_service: DelegacionService, private persona_service: PersonaService, private formBuilder: FormBuilder, private router: Router) { }
 
@@ -62,11 +63,13 @@ export class PersonaComponent implements OnInit {
 
   // List
   getPersonas(){
+    this.loading = true;
     this.personas = [];
     this.persona_service.getPersonas().subscribe(
       res => {
         this.personas = res;
         console.log(this.personas);
+        this.loading = false;
       },
       err => console.error(err)
     );

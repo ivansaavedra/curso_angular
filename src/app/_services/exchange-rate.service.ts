@@ -9,7 +9,7 @@ export class ExchangeRateService {
 
   constructor(private http: HttpClient) { }
 
-  getExchangeRate(){
-    return this.http.get<ExchangeRate>("https://api.exchangerate-api.com/v4/latest/USD");
+  getExchangeRate(rate: string){
+    return this.http.get<ExchangeRate>("https://api.exchangerate-api.com/v4/latest/" + rate);
   }
 }

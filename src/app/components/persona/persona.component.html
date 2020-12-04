@@ -8,8 +8,8 @@
       <div class="card-body">
         <button style="float: right" (click)="openModal()" type="button" class="btn btn-info btn-sm">Registrar Persona</button>
         <br><br>
-
-          <table class="table table-responsive" style="width:100%">
+        <div class="table-responsive">
+          <table *ngIf="!loading" class="table" style="width:100%">
             <thead class="thead-light">
               <tr>
                 <!-- <th class="text-center">Id</th> -->
@@ -44,6 +44,14 @@
               </tr>
             </tbody>
             </table>
+
+            <div *ngIf="loading" class="loading-center"> 
+              <img src="assets/cargando.gif" alt="">
+              <h4>Cargando lista de personas...</h4>
+              <br>
+          </div>
+
+          </div>
       </div>
   
       <div class="card-footer">

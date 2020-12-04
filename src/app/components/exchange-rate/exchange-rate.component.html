@@ -2,13 +2,28 @@
   <div class="card">
     <div class="card-header">
         <h1>Exchange Rate</h1>
-        <p>base: {{ exchange_rate.base }}</p>
+        <br>
+        <h4>base: {{ exchange_rate.base }}</h4>
         <p>date: {{ exchange_rate.date }}</p>
-        
     </div>
 
     <div class="card-body">
-        <table class="table" style="width:100%">
+      <div>
+          <form class="form-inline" [formGroup]="formulario" (ngSubmit)="ngSubmit()">
+  
+            <div class="form-group">
+              <label for="rate">Cambiar RATE &nbsp;&nbsp;&nbsp;</label>
+              <input type="text" id="rate" class="form-control" formControlName="rate">
+            </div>
+            <div>
+              &nbsp;&nbsp;&nbsp; <button class="btn btn-dark ">Consular</button>
+            </div>
+          </form>
+          <br>
+      </div>
+
+      <div class="table-responsive">
+        <table *ngIf="!loading" class="table" style="width:100%">
           <thead class="thead-light">
             <tr>
               <th class="text-center">Rate</th>
@@ -22,6 +37,14 @@
             </tr>
           </tbody>
           </table>
+
+          <div *ngIf="loading" class="loading-center"> 
+            <img src="assets/cargando.gif" alt="">
+            <h4>Cargando RATES...</h4>
+            <br>
+        </div>
+
+        </div>
     </div>
 
     <div class="card-footer">
