@@ -14,6 +14,7 @@ import { PersonaComponent } from './components/persona/persona.component';
 import { EmpleadoComponent } from './components/empleado/empleado.component';
 import { PersonaDetalleComponent } from './components/persona-detalle/persona-detalle.component';
 import { InterceptorService } from './_services/interceptor.service';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { InterceptorService } from './_services/interceptor.service';
     IfscComponent,
     PersonaComponent,
     EmpleadoComponent,
-    PersonaDetalleComponent
+    PersonaDetalleComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

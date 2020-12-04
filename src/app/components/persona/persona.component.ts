@@ -183,7 +183,11 @@ export class PersonaComponent implements OnInit {
     this.formulario.controls['id'].setValue(persona.id);
     this.formulario.controls['nombre'].setValue(persona.nombre);
     this.formulario.controls['apellidos'].setValue(persona.apellidos);
-    this.formulario.controls['fecha_nacimiento'].setValue(persona.fecha_nacimiento);
+
+    var y = persona.fecha_nacimiento.toString().substring(0,4);
+    var m = persona.fecha_nacimiento.toString().substring(5,7);
+    var d = persona.fecha_nacimiento.toString().substring(8,10);
+    this.formulario.controls['fecha_nacimiento'].setValue(y + "-" + m + "-" + d);
     this.formulario.controls['domicilio'].setValue(persona.domicilio);
     this.formulario.controls['rfc'].setValue(persona.rfc);
 
@@ -195,6 +199,7 @@ export class PersonaComponent implements OnInit {
 
   openModal(){
     $("#personaModal").modal("show");
+    $("#nombre").focus();
   }
 
   verDetallePersona(id){

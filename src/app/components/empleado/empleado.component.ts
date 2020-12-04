@@ -26,6 +26,8 @@ export class EmpleadoComponent implements OnInit {
   contrato: string;
   fotografia: string;
 
+  loading = false;
+
   constructor(private empleadoService: EmpleadoService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -54,11 +56,13 @@ export class EmpleadoComponent implements OnInit {
   }
 
   getEmpleados(){
+    this.loading = true;
     this.empleados = [];
     this.empleadoService.getEmpleados().subscribe(
       res => {
         this.empleados = res;
-        console.log(this.empleados)
+        console.log(this.empleados);
+        this.loading = false;
       },
       err => console.error(err)
     )

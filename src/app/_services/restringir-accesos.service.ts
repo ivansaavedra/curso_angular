@@ -14,7 +14,7 @@ export class RestringirAccesosService implements CanActivate{
   constructor(private router: Router) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     
-    localStorage.setItem('token','false');
+    localStorage.setItem('token','true');
 
     if(localStorage.getItem('token') != 'true'){
       Swal.fire({

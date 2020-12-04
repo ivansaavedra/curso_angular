@@ -2,15 +2,19 @@ import { TestBed } from '@angular/core/testing';
 
 import { PersonaService } from './persona.service';
 
-describe('PersonaService', () => {
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
+fdescribe('PersonaService', () => {
   let service: PersonaService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule]
+    });
     service = TestBed.inject(PersonaService);
   });
 
-  it('should be created', () => {
+  fit('should be created', () => {
     expect(service).toBeTruthy();
   });
 });

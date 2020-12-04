@@ -9,7 +9,7 @@
         <button style="float: right" (click)="openModal()" type="button" class="btn btn-info btn-sm">Registrar Persona</button>
         <br><br>
 
-          <table class="table" style="width:100%">
+          <table class="table table-responsive" style="width:100%">
             <thead class="thead-light">
               <tr>
                 <!-- <th class="text-center">Id</th> -->
@@ -19,6 +19,8 @@
                 <th class="text-center">Domicilio</th>
                 <th class="text-center">RFC</th>
                 <th></th>
+                <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -26,17 +28,18 @@
                 <!-- <td class="text-center">{{persona.id}}</td> -->
                 <td class="text-center">{{persona.nombre}}</td>
                 <td class="text-center">{{persona.apellidos}}</td>
-                <td class="text-center">{{persona.fecha_nacimiento}}</td>
+                <td class="text-center">{{persona.fecha_nacimiento | date : 'dd/MM/yy' : 'UTC'}}</td>
                 <td class="text-center">{{persona.domicilio}}</td>
                 <td class="text-center">{{persona.rfc}}</td>
                 <td>
-                  <div>
-                    <button (click)="verDetallePersona(persona.id)" type="button" class="btn btn-info btn-sm">Ver Detalle</button>
-                    &nbsp;&nbsp;
-                    <button (click)="llenarFormulario(persona)" type="button" class="btn btn-primary btn-sm">Actualizar</button>
-                    &nbsp;&nbsp;
+                    <button (click)="verDetallePersona(persona.id)" type="button" class="btn btn-success btn-sm">Consultar</button>
+                </td>
+                <td>
+                    <button (click)="llenarFormulario(persona)" type="button" class="btn btn-info btn-sm">Actualizar</button>
+                  </td>
+                  <td>
                     <button (click)="deletePersona(persona.id)" type="button" class="btn btn-danger btn-sm">Eliminar</button>
-                  </div>
+
                 </td>
               </tr>
             </tbody>
@@ -54,7 +57,8 @@
     <div class="modal-content">
 
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h5 *ngIf="update" class="modal-title">Actualizar Persona</h5>
+        <h5 *ngIf="!update" class="modal-title">Registar Persona</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -65,7 +69,7 @@
 
           <div class="form-group">
             <label for="nombre">Nombre*</label>
-            <input type="text" class="form-control" formControlName="nombre" [ngClass]="{'is-invalid': submitted && f.nombre.errors}">
+            <input type="text" id="nombre" class="form-control" formControlName="nombre" [ngClass]="{'is-invalid': submitted && f.nombre.errors}">
             <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
               El nombre de la persona es obligatorio
             </div>
